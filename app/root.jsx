@@ -8,13 +8,18 @@ import {
   ScrollRestoration,
 } from "remix";
 import styles from "~/tailwind.css";
+import sty from "~/styles/globalStyle.css";
 
 export const links = () => [
   {
     rel: "stylesheet",
     href: styles,
+  },{
+    rel: "stylesheet",
+    href: sty,
   },
 ];
+
 
 export function meta() {
   return {
