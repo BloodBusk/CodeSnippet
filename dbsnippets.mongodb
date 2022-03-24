@@ -1,0 +1,8 @@
+
+use('pmdb');
+
+// Insert a few documents into the sales collection.
+db.snippets.insertMany([
+  { '_id': 1, 'title': 'Header On Scroll', 'language': "JavaScript", 'snippet': "asd", "description": "This code is JS, it works as you scroll, it calls the function myFunction() and adds the Sticky property to the header id.", "favorite": false,'date': new Date() },
+  { '_id': 2, 'title': 'Header On Scroll', 'language': "JavaScript", 'snippet': "asd", "description": "This code is JS, it works as you scroll, it calls the function myFunction() and adds the Sticky property to the header id.", "favorite": false,'date': new Date() },
+]);
