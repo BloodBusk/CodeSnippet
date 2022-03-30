@@ -1,6 +1,5 @@
-import { useLoaderData, Link, Outlet, redirect } from "remix";
-import connectDb from "~/db/connectDb.server.js";
-import snippetLinkStyle from "~/styles/snippetLinkStyle.css";
+import { redirect } from "remix";
+
 
 export async function loader() { 
   return redirect("/snippets");;

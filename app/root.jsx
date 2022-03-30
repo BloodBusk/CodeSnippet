@@ -38,6 +38,9 @@ export default function App() {
       </head>
       <body className="snippetBody">
         <header className="snippetHeader">
+          <Link to="/snippets/new" className="createSnippetBtn">
+            New Snippet
+          </Link>
           <h2 className="headerh2">Language:</h2>
           <Link to="/" className="headerLink">
             All

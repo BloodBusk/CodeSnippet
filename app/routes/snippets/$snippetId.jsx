@@ -1,4 +1,5 @@
-import { useLoaderData, json, useCatch } from "remix";
+import { redirect } from "build";
+import { useLoaderData, json, useCatch, Form } from "remix";
 import connectDb from "~/db/connectDb.server.js";
 import snippetIdStyle from "~/styles/snippetIdStyle.css";
 
@@ -18,6 +19,23 @@ export async function loader({ params }) {
   return json(snippet);
 }
 
+export async function action({ request }) {
+  const db = await connectDb();
+  const form = await request.formData();
+  // var ObjectId = require('mongodb').ObjectID;
+  if (request.method == "DELETE") {
+    try {
+      await db.models.Snippet.deleteOne({ _id: form._id });
+      console.log("Data Deleted");
+      return redirect("/snippets");
+    } catch (err) {
+      return json(err.errors, { status: 400 });
+    }
+  }
+
+  return null;
+}
+
 export default function SnippetPage() {
   const snippet = useLoaderData();
   return (
@@ -28,8 +46,16 @@ export default function SnippetPage() {
           <p className="snippetTag">{snippet.language}</p>
         </div>
         <div>
-          <button className="editBtn">Edit</button>
-          <button className="deleteBtn">...</button>
+          <Form method="post">
+            <button className="editBtn" type="submit">
+              Edit
+            </button>
+          </Form>
+          <Form method="DELETE">
+            <button className="deleteBtn" type="submit">
+              Delete
+            </button>
+          </Form>
         </div>
       </div>
       <div className="divider"></div>
@@ -51,10 +77,10 @@ export function CatchBoundary() {
   );
 }
 
-export function ErrorBoundary({ error }) {
-  return (
-    <div>
-      <p>Oh no, something went wrong</p>
-    </div>
-  );
-}
+// export function ErrorBoundary({ error }) {
+//   return (
+//     <div>
+//       <p>Oh no, something went wrong</p>
+//     </div>
+//   );
+// }

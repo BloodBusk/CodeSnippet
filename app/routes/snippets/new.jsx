@@ -1,4 +1,3 @@
-
 import { Form, redirect, json, useActionData } from "remix";
 import connectDb from "~/db/connectDb.server";
 
