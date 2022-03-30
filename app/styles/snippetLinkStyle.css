@@ -2,6 +2,8 @@
     width: 250px;
     background: var(--color-primary);
     color: var(--color-quaternary);
+    height: 100vh;
+    overflow: scroll;
 }
 
 .snippetLinkContainer ul{

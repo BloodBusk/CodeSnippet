@@ -1,6 +1,8 @@
 .snippetId{
     margin: 0 auto;
     min-width: 50%;
+    height: 100vh;
+    overflow: scroll;
 }
 
 .snippetIdH2{
@@ -66,4 +68,8 @@
 .deleteBtn:hover{
     background: red;
     color: var(--color-white);
+}
+
+.snippetIdFormContainer{
+    display: flex;
 }

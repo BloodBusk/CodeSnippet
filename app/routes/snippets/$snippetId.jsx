@@ -1,5 +1,4 @@
-import { redirect } from "build";
-import { useLoaderData, json, useCatch, Form } from "remix";
+import { useLoaderData, json, useCatch, Form, redirect } from "remix";
 import connectDb from "~/db/connectDb.server.js";
 import snippetIdStyle from "~/styles/snippetIdStyle.css";
 
@@ -19,14 +18,12 @@ export async function loader({ params }) {
   return json(snippet);
 }
 
-export async function action({ request }) {
+export async function action({ request, params }) {
   const db = await connectDb();
   const form = await request.formData();
-  // var ObjectId = require('mongodb').ObjectID;
   if (request.method == "DELETE") {
     try {
-      await db.models.Snippet.deleteOne({ _id: form._id });
-      console.log("Data Deleted");
+      await db.models.Snippet.deleteOne({ _id: params.snippetId });
       return redirect("/snippets");
     } catch (err) {
       return json(err.errors, { status: 400 });
@@ -45,7 +42,7 @@ export default function SnippetPage() {
           <h2 className="snippetIdH2">{snippet.title}</h2>
           <p className="snippetTag">{snippet.language}</p>
         </div>
-        <div>
+        <div className="snippetIdFormContainer">
           <Form method="post">
             <button className="editBtn" type="submit">
               Edit
