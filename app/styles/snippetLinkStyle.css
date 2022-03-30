@@ -1,0 +1,21 @@
+.snippetLinkContainer{
+    width: 250px;
+    background: var(--color-primary);
+    color: var(--color-quaternary);
+}
+
+.snippetLinkContainer ul{
+    margin-top: 5vh;
+}
+
+.snippetLinkComponent{
+    border: 1px solid var(--color-secondary);
+    height: 100px;
+    background: var(--color-white);
+    color: var(--color-tertiary);
+}
+
+.snippetLinkComponent:hover {
+    border-left: 5px solid var(--color-secondary);
+    cursor: pointer;
+}

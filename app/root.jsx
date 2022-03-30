@@ -36,10 +36,14 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body className="bg-slate-100 text-slate-800 font-sans p-4">
-        <header className="pb-3 mb-4 border-b-2">
-          <Link to="/" className="hover:underline text-blue-600">
-            Home
+      <body className="snippetBody">
+        <header className="snippetHeader">
+          <h2 className="headerh2">Language:</h2>
+          <Link to="/" className="headerLink">
+            All
+          </Link>
+          <Link to="/" className="headerLink">
+            JavaScript
           </Link>
         </header>
         <Outlet />

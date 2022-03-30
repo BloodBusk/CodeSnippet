@@ -1,0 +1,32 @@
+:root {
+  --color-primary: #52057b;
+  --color-secondary: #892cdc;
+  --color-tertiary: #000000;
+  --color-quaternary: #c6c6c6;
+  --color-white: #FFFFFF;
+  --header-font-weight: 500;
+}
+
+.snippetBody {
+  display: flex;
+}
+
+.snippetHeader {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-tertiary);
+  color: var(--color-quaternary);
+  width: 250px;
+  padding: 0 2%;
+  height: 100vh;
+}
+
+.headerh2 {
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-weight: var(--header-font-weight);
+  font-size: 20px;
+}
+
+.headerLink:hover {
+  text-decoration: underline;
+}
