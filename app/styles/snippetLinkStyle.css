@@ -3,7 +3,7 @@
     background: var(--color-primary);
     color: var(--color-quaternary);
     height: 100vh;
-    overflow: scroll;
+    overflow: auto;
 }
 
 .snippetLinkContainer ul{
@@ -15,9 +15,26 @@
     height: 100px;
     background: var(--color-white);
     color: var(--color-tertiary);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 5px;
+    word-wrap: break-word;
 }
 
 .snippetLinkComponent:hover {
     border-left: 5px solid var(--color-secondary);
     cursor: pointer;
+}
+
+.snippetLinkComponent div{
+    display: flex;
+    justify-content: space-between;
+}
+
+.snippetLanguage{
+    border: 1px solid var(--color-primary);
+    border-radius: 20px;
+    padding: 0 5px;
+    display: inline-block;
 }

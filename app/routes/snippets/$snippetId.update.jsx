@@ -35,6 +35,7 @@ export async function action({ request, params }) {
 export default function CreateSnippet() {
   const snippet = useLoaderData();
   const actionData = useActionData();
+
   return (
     <div className="snippetUpdateContainer">
       <h1>Update Snippet</h1>
