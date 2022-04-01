@@ -20,11 +20,17 @@ export async function loader({ params }) {
 
 export async function action({ request, params }) {
   const db = await connectDb();
-  const form = await request.formData();
   if (request.method == "DELETE") {
     try {
       await db.models.Snippet.deleteOne({ _id: params.snippetId });
       return redirect("/snippets");
+    } catch (err) {
+      return json(err.errors, { status: 400 });
+    }
+  }
+  if (request.method == "POST") {
+    try {
+      return redirect(`/snippets/${params.snippetId}/update`);
     } catch (err) {
       return json(err.errors, { status: 400 });
     }
@@ -43,7 +49,7 @@ export default function SnippetPage() {
           <p className="snippetTag">{snippet.language}</p>
         </div>
         <div className="snippetIdFormContainer">
-          <Form method="post">
+          <Form method="POST">
             <button className="editBtn" type="submit">
               Edit
             </button>

@@ -8,6 +8,8 @@ const snippetSchema = new Schema({
   snippet: String,
   description: String,
   favorite: Boolean,
+  createdAt: Date,
+  updatedAt: Date,
 });
 
 export const models = [
