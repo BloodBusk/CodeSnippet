@@ -4,13 +4,6 @@ import connectDb from "~/db/connectDb.server.js";
 import snippetLinkStyle from "~/styles/snippetLinkStyle.css";
 import { Icon } from "@iconify/react";
 
-
-export async function loader() {
-  const db = await connectDb();
-  const snippets = await db.models.Snippet.find();
-  return snippets;
-}
-
 export const links = () => [
   {
     rel: "stylesheet",
@@ -18,22 +11,36 @@ export const links = () => [
   },
 ];
 
+export async function loader({ request }) {
+  const db = await connectDb();
+  const url = new URL(request.url);
+  const titleSearch = url.searchParams.get("search");
+  const sortParam = url.searchParams.get("sort");
+  console.log(sortParam);
+  const snippets = (await db.models.Snippet.find().sort(sortParam)); //finds and sorts by dropdown list value
+  return snippets.filter((snippet) =>
+    titleSearch ? snippet.title.toLowerCase().includes(titleSearch.toLowerCase()) : true
+  ); //filters snippet data with search params from search bar
+}
+
 export default function Snippets() {
   const snippets = useLoaderData();
-
-  const toggleStar = () => {
-    if (!snippets.favorite) {
-      return <Icon icon="ri:star-line" />;
-    }
-    return <Icon icon="ri:star-fill" />;
-  };
 
   return (
     <>
       <div className="snippetLinkContainer">
         <h2>Code Snippets</h2>
-        <Form>
-          <input type="text" name="search" placeholder="Search snippets" />
+        <Form method="get">
+          <input type="search" name="search" placeholder="Search snippets" />
+          <button type="submit">Search</button>
+        </Form>
+        <Form method="get">
+          <select name="sort">
+            <option value="title">By Title</option>
+            <option value="updatedAt">By Last Updated</option>
+            <option value="favorite">By Favorite</option>
+          </select>
+          <button type="submit">Sort</button>
         </Form>
         <ul>
           {snippets.map((snippet) => {
@@ -42,7 +49,13 @@ export default function Snippets() {
                 <li className="snippetLinkComponent">
                   <div>
                     <p>{snippet.title}</p>
-                    <p className="star">{toggleStar()}</p>
+                    <p className="star">
+                      {snippets.favorite ? (
+                        <Icon icon="ri:star-fill" />
+                      ) : (
+                        <Icon icon="ri:star-line" />
+                      )}
+                    </p>
                   </div>
                   <div>
                     <p className="snippetLanguage">{snippet.language}</p>

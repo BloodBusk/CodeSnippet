@@ -9,7 +9,7 @@ export default function Index() {
 
   return (
     <div>
-      Snippets
+      Select a language on the left
     </div>
   );
 }

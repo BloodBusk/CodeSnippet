@@ -1,4 +1,4 @@
 
 export default function SnippetIndex(){
-    return <div className="">Snippets</div>
+    return <div className="">Select a snippet on the left</div>
 }
