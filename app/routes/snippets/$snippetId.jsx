@@ -96,7 +96,7 @@ export default function SnippetPage() {
         <pre className="snippetCode">{snippet.snippet}</pre>
       </code>
       <h3 className="snippetCodeExplanation">Code Explanation</h3>
-      <p>{snippet.description}</p>
+      <p className="snippetCodeExplanationp">{snippet.description}</p>
     </div>
   );
 }

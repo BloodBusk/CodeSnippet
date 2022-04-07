@@ -30,12 +30,12 @@ export default function Snippets() {
     <>
       <div className="snippetLinkContainer">
         <h2>Code Snippets</h2>
-        <Form method="get">
+        <Form method="get" className="searchBar">
           <input type="search" name="search" placeholder="Search snippets" />
           <button type="submit">Search</button>
         </Form>
-        <Form method="get">
-          <select name="sort">
+        <Form method="get" className="sortBar">
+          <select name="sort" >
             <option value="title">By Title</option>
             <option value="updatedAt">By Last Updated</option>
             <option value="favorite">By Favorite</option>

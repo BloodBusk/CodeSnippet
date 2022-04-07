@@ -1,0 +1,66 @@
+.createSnippetContainer {
+    min-width: 50%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    overflow: auto; 
+}
+
+.createSnippetContainer h1 {
+    font-size: 25px;
+    font-weight: var(--header-font-weight);
+}
+
+.createSnippetForm {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.createSnippetForm label {
+    font-size: 20px;
+}
+
+.createSnippetForm input {
+    padding: 5px 10px;
+    border: 1px solid var(--color-tertiary);
+    border-radius: 20px;
+    margin-bottom: 2vh;
+}
+
+.createSnippetForm textarea {
+    padding: 5px 10px;
+    border: 1px solid var(--color-tertiary);
+    border-radius: 20px;
+    margin-bottom: 2vh;
+}
+
+.createLanguage {
+    padding: 5px 10px;
+    border: 1px solid var(--color-tertiary);
+    border-radius: 20px;
+    margin-bottom: 2vh;
+}
+
+.createSnippetText {
+    height: 40vh;
+}
+
+.createDescriptionText {
+    height: 10vh;
+}
+
+.createSnippetForm button{
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    width: 50%;
+    margin: 0 auto;
+    height: 40px;
+    border-radius: 20px;
+}
+
+.createSnippetForm button:hover{
+    background: var(--color-secondary);
+}
