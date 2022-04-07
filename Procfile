@@ -1,1 +1,1 @@
-web:node app/root.jsx
+web:node index.js
