@@ -1,6 +1,5 @@
 import mongoose from "mongoose";
 import { models } from "./models.js";
-import {ObjectId} from "mongodb";
 
 
 const { MONGODB_URL, NODE_ENV } = process.env;
