@@ -1,13 +1,13 @@
 import { useLoaderData, json, useCatch, Form, redirect } from "remix";
 import connectDb from "~/db/connectDb.server.js";
-import snippetIdStyle from "~/styles/snippetIdStyle.css";
+import SnippetIdStyle from "~/styles/snippetIdStyle.css";
 import { useState } from "react";
 import { Icon } from "@iconify/react";
 
 export const links = () => [
   {
     rel: "stylesheet",
-    href: snippetIdStyle,
+    href: SnippetIdStyle,
   },
 ];
 

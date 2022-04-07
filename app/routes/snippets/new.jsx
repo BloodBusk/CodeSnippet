@@ -1,11 +1,11 @@
 import { Form, redirect, json, useActionData } from "remix";
 import connectDb from "~/db/connectDb.server";
-import snippetCreateStyle from "~/styles/snippetCreateStyle.css";
+import SnippetCreateStyle from "~/styles/snippetCreateStyle.css";
 
 export const links = () => [
   {
     rel: "stylesheet",
-    href: snippetCreateStyle,
+    href: SnippetCreateStyle,
   },
 ];
 

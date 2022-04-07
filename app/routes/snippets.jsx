@@ -1,13 +1,13 @@
 import { Outlet } from "@remix-run/react";
 import { useLoaderData, Link, Form } from "remix";
 import connectDb from "~/db/connectDb.server.js";
-import snippetLinkStyle from "~/styles/snippetLinkStyle.css";
+import SnippetLinkStyle from "~/styles/snippetLinkStyle.css";
 import { Icon } from "@iconify/react";
 
 export const links = () => [
   {
     rel: "stylesheet",
-    href: snippetLinkStyle,
+    href: SnippetLinkStyle,
   },
 ];
 
