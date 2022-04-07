@@ -1,16 +1,16 @@
 import { Form, redirect, json, useActionData, useLoaderData } from "remix";
-import ConnectDb from "~/db/connectDb.server";
-import SnippetIdUpdateStyle from "~/styles/snippetIdUpdateStyle.css";
+import connectDb from "~/db/connectDb.server";
+import snippetIdUpdateStyle from "~/styles/snippetIdUpdateStyle.css";
 
 export const links = () => [
   {
     rel: "stylesheet",
-    href: SnippetIdUpdateStyle,
+    href: snippetIdUpdateStyle,
   },
 ];
 
 export async function loader({ params }) {
-  const db = await ConnectDb();
+  const db = await connectDb();
   let snippet = await db.models.Snippet.findById(params.snippetId); //without await throws error boundary
   if (!snippet) {
     throw new Response("Not Found", { status: 404 });
@@ -20,7 +20,7 @@ export async function loader({ params }) {
 
 export async function action({ request, params }) {
   const form = await request.formData();
-  const db = await ConnectDb();
+  const db = await connectDb();
   try {
     await db.models.Snippet.updateOne(
       { _id: params.snippetId },

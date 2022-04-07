@@ -1,18 +1,18 @@
 import { Outlet } from "@remix-run/react";
 import { useLoaderData, Link, Form } from "remix";
-import ConnectDb from "~/db/connectDb.server.js";
-import SnippetLinkStyle from "~/styles/snippetLinkStyle.css";
+import connectDb from "~/db/connectDb.server.js";
+import snippetLinkStyle from "~/styles/snippetLinkStyle.css";
 import { Icon } from "@iconify/react";
 
 export const links = () => [
   {
     rel: "stylesheet",
-    href: SnippetLinkStyle,
+    href: snippetLinkStyle,
   },
 ];
 
 export async function loader({ request }) {
-  const db = await ConnectDb();
+  const db = await connectDb();
   const url = new URL(request.url);
   const titleSearch = url.searchParams.get("search");
   const sortParam = url.searchParams.get("sort");

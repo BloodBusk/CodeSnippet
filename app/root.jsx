@@ -7,16 +7,16 @@ import {
   Scripts,
   ScrollRestoration,
 } from "remix";
-import Styles from "~/tailwind.css";
-import Sty from "~/styles/globalStyle.css";
+import styles from "~/tailwind.css";
+import sty from "~/styles/globalStyle.css";
 
 export const links = () => [
   {
     rel: "stylesheet",
-    href: Styles,
+    href: styles,
   },{
     rel: "stylesheet",
-    href: Sty,
+    href: sty,
   },
 ];
 
