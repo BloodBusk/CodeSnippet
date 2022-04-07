@@ -1,5 +1,5 @@
 import { useLoaderData, json, useCatch, Form, redirect } from "remix";
-import connectDb from "~/db/connectDb.server.js";
+import ConnectDb from "~/db/connectDb.server.js";
 import SnippetIdStyle from "~/styles/snippetIdStyle.css";
 import { useState } from "react";
 import { Icon } from "@iconify/react";
@@ -12,7 +12,7 @@ export const links = () => [
 ];
 
 export async function loader({ params }) {
-  const db = await connectDb();
+  const db = await ConnectDb();
   let snippet = await db.models.Snippet.findById(params.snippetId); //without await throws error boundary
   if (!snippet) {
     throw new Response("Not Found", { status: 404 });
@@ -21,7 +21,7 @@ export async function loader({ params }) {
 }
 
 export async function action({ request, params }) {
-  const db = await connectDb();
+  const db = await ConnectDb();
   let formData = await request.formData();
   let { _action, ...values } = Object.fromEntries(formData);
 

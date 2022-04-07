@@ -1,5 +1,5 @@
 import { Form, redirect, json, useActionData } from "remix";
-import connectDb from "~/db/connectDb.server";
+import ConnectDb from "~/db/connectDb.server";
 import SnippetCreateStyle from "~/styles/snippetCreateStyle.css";
 
 export const links = () => [
@@ -11,7 +11,7 @@ export const links = () => [
 
 export async function action({ request }) {
   const form = await request.formData();
-  const db = await connectDb();
+  const db = await ConnectDb();
   try {
     const newSnippet = await db.models.Snippet.create({
       title: form.get("title"),

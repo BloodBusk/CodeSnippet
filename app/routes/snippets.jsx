@@ -1,6 +1,6 @@
 import { Outlet } from "@remix-run/react";
 import { useLoaderData, Link, Form } from "remix";
-import connectDb from "~/db/connectDb.server.js";
+import ConnectDb from "~/db/connectDb.server.js";
 import SnippetLinkStyle from "~/styles/snippetLinkStyle.css";
 import { Icon } from "@iconify/react";
 
@@ -12,7 +12,7 @@ export const links = () => [
 ];
 
 export async function loader({ request }) {
-  const db = await connectDb();
+  const db = await ConnectDb();
   const url = new URL(request.url);
   const titleSearch = url.searchParams.get("search");
   const sortParam = url.searchParams.get("sort");
