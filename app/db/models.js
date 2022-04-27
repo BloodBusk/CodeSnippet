@@ -12,10 +12,20 @@ const snippetSchema = new Schema({
   updatedAt: Date,
 });
 
+const loginSchema = new Schema({
+  username: String,
+  password: String,
+});
+
 export const models = [
   {
     name: "Snippet",
     schema: snippetSchema,
     collection: "snippets",
+  },
+  {
+    name: "Login",
+    schema: loginSchema,
+    collection: "login",
   },
 ];
