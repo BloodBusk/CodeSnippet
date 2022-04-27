@@ -1,4 +1,4 @@
-import { Form, useLoaderData, redirect, json, useActionData } from "remix";
+import { Form, useLoaderData, redirect, json, useActionData, createCookie } from "remix";
 import { getSession, commitSession } from "~/session.js";
 import connectDb from "~/db/connectDb.server.js";
 
@@ -18,7 +18,7 @@ export async function action({ request }) {
     const session = await getSession(request.headers.get("Cookie"));
     session.set("userId", users._id);
     console.log(session.get("userId"));
-    return redirect("/login", {
+    return redirect("/snippets", {
       headers: {
         "Set-Cookie": await commitSession(session),
       },
@@ -30,7 +30,10 @@ export async function action({ request }) {
 
 export async function loader({ request }) {
   const session = await getSession(request.headers.get("Cookie"));
-  const cookieSecret = process.env.COOKIE_SECRET;
+  const cookie = createCookie("user-prefs", {
+    secrets: [process.env.COOKIE_SECRET],
+  });
+  console.log(cookie.isSigned)
   return json({
     userId: session.get("userId"),
   });
@@ -43,7 +46,6 @@ export default function Login() {
     <div className="p-8 m-8 text-slate-800 shadow-lg xl:w-1/3 lg:w-1/2">
       <h1 className="text-2xl font-bold mb-8">Login</h1>
       <div>
-          
         {!userId ? (
           <Form method="post">
             <input type="text" name="username" placeholder="username"></input>
