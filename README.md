@@ -1,6 +1,6 @@
 # Code Snippet Saver
 
-![alt text]("./imgs/codeSnippet.png")
+![alt text]("./app/imgs/codeSnippet.png")
 
 # How to Install and Run the Project
 ## Development
