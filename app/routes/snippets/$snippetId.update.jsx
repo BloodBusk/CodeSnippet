@@ -46,7 +46,7 @@ export default function CreateSnippet() {
           name="title"
           id="title"
           className="titleUpdateText"
-          placeholder={snippet.title}
+          defaultValue={snippet.title}
         ></input>
         {actionData?.errors.title ? (
           <p>{actionData.errors.title.message()}</p>
@@ -54,9 +54,9 @@ export default function CreateSnippet() {
           ""
         )}
         <label>Snippet</label>
-        <textarea type="text" name="snippet" id="snippet" className="snippetUpdateText" placeholder={snippet.snippet}></textarea>
+        <textarea type="text" name="snippet" id="snippet" className="snippetUpdateText" defaultValue={snippet.snippet}></textarea>
         <label>Description</label>
-        <textarea type="text" name="description" id="description" className="descriptionUpdateText" placeholder={snippet.description}></textarea>
+        <textarea type="text" name="description" id="description" className="descriptionUpdateText" defaultValue={snippet.description}></textarea>
         <button type="submit">Update</button>
       </Form>
     </div>

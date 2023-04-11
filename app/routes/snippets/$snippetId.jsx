@@ -55,11 +55,6 @@ export async function action({ request, params }) {
 
 export default function SnippetPage() {
   const snippet = useLoaderData();
-  const [checkFav, setCheckFav] = useState(snippet.favorite);
-
-  const handleCheck = () => {
-    setCheckFav(prev => !prev);
-  };
 
   return (
     <div className="snippetId">
@@ -70,8 +65,8 @@ export default function SnippetPage() {
         </div>
         <div className="snippetIdFormContainer">
           <Form method="POST">
-            <button className="favbtn" type="submit" name="_action" value="favorite" onClick={handleCheck}>
-              {checkFav ? (<Icon icon="ri:star-line" />) : (<Icon icon="ri:star-fill" />)}
+            <button className="favbtn" type="submit" name="_action" value="favorite">
+              {snippet.favorite ? (<Icon icon="ri:star-line" />) : (<Icon icon="ri:star-fill" />)}
             </button>
           </Form>
           <Form method="POST">

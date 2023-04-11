@@ -17,9 +17,11 @@ export async function loader({ request }) {
   const titleSearch = url.searchParams.get("search");
   const sortParam = url.searchParams.get("sort");
   console.log(sortParam);
-  const snippets = (await db.models.Snippet.find().sort(sortParam)); //finds and sorts by dropdown list value
+  const snippets = await db.models.Snippet.find().sort(sortParam); //finds and sorts by dropdown list value
   return snippets.filter((snippet) =>
-    titleSearch ? snippet.title.toLowerCase().includes(titleSearch.toLowerCase()) : true
+    titleSearch
+      ? snippet.title.toLowerCase().includes(titleSearch.toLowerCase())
+      : true
   ); //filters snippet data with search params from search bar
 }
 
@@ -35,7 +37,7 @@ export default function Snippets() {
           <button type="submit">Search</button>
         </Form>
         <Form method="get" className="sortBar">
-          <select name="sort" >
+          <select name="sort">
             <option value="title">By Title</option>
             <option value="updatedAt">By Last Updated</option>
             <option value="favorite">By Favorite</option>
@@ -50,10 +52,10 @@ export default function Snippets() {
                   <div>
                     <p>{snippet.title}</p>
                     <p className="star">
-                      {snippets.favorite ? (
-                        <Icon icon="ri:star-fill" />
-                      ) : (
+                      {snippet.favorite ? (
                         <Icon icon="ri:star-line" />
+                      ) : (
+                        <Icon icon="ri:star-fill" />
                       )}
                     </p>
                   </div>

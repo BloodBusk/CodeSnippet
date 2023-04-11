@@ -24,7 +24,7 @@ export const links = () => [
 export function meta() {
   return {
     charset: "utf-8",
-    title: "Remix + MongoDB",
+    title: "Code snippet saver",
     viewport: "width=device-width,initial-scale=1",
   };
 }
